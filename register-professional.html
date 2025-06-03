@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انضم كصنايعي - صنايعي</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><h1>صنايعي</h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="request-service.html">اطلب خدمة</a></li>
+                    <li><a href="register-professional.html">انضم كصنايعي</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="register-professional-section">
+        <div class="container">
+            <h2>انضم كصنايعي</h2>
+            <p class="lead-text">
+                يمكنك إضافة بياناتك مباشرة بدون الحاجة لتسجيل دخول. بعد التسجيل سيتم مراجعة بياناتك من الإدارة وتفعيل حسابك.<br>
+                بعد تفعيل الحساب وتسجيل الدخول، ستظهر لك لوحة الصنايعي لمتابعة الطلبات القريبة والتواصل مع العملاء.
+            </p>
+            <div class="membership-info">
+                <span class="membership-badge free">جميع الصنايعية يظهرون في نتائج البحث مجاناً</span>
+            </div>
+            <ul>
+                <li>طلبات عملاء يومية</li>
+                <li>دعم فني وتسويقي</li>
+                <li>نظام تقييم شفاف</li>
+                <li>سهولة إدارة ملفك وجدولك</li>
+            </ul>
+            <form id="register-professional-form" class="register-form">
+                <div class="form-group">
+                    <label for="pro-name">الاسم الكامل:</label>
+                    <input type="text" id="pro-name" name="pro-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="pro-phone">رقم الهاتف:</label>
+                    <input type="tel" id="pro-phone" name="pro-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="pro-email">البريد الإلكتروني:</label>
+                    <input type="email" id="pro-email" name="pro-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="pro-service">نوع الخدمة:</label>
+                    <select id="pro-service" name="pro-service" required>
+                        <option value="">اختر الخدمة</option>
+                        <option value="سباكة">سباكة</option>
+                        <option value="كهرباء">كهرباء</option>
+                        <option value="نجارة">نجارة</option>
+                        <option value="نقاشة">نقاشة</option>
+                        <option value="أخرى">أخرى</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pro-location">الموقع:</label>
+                    <input type="text" id="pro-location" name="pro-location" required>
+                </div>
+                <button type="submit" class="btn primary-btn full-width-btn" id="register-pro-submit-btn">سجل الآن</button>
+                <div id="register-spinner" class="spinner" style="display:none;"></div>
+            </form>
+            <div id="register-success-message" style="display:none; color:green; margin-top:20px;">
+                تم تسجيلك بنجاح! سيتم مراجعة بياناتك من الإدارة وتفعيل حسابك قريباً.
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p>البريد الإلكتروني: ehabgm200@gmail.com</p>
+                    <p>الهاتف: 01022679250</p>
+                    <div class="social-media">
+                        <a href="https://www.ehabgm.link/" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 صنايعي. جميع الحقوق محفوظة. www.ehabgm.link - ehabgm200@gmail.com - 01022679250</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+    document.getElementById('register-professional-form').addEventListener('submit', async function(e){
+        e.preventDefault();
+        document.getElementById('register-spinner').style.display = 'inline-block';
+        const name = document.getElementById('pro-name').value;
+        const email = document.getElementById('pro-email').value;
+        const phone = document.getElementById('pro-phone').value;
+        const service_type = document.getElementById('pro-service').value;
+        const location = document.getElementById('pro-location').value;
+        if(!name || !email || !phone || !service_type || !location){
+            alert('يرجى ملء جميع الحقول');
+            document.getElementById('register-spinner').style.display = 'none';
+            return;
+        }
+        try {
+            const userRes = await fetch('/api/index.php?route=users', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ name, email, password: phone, type: 'professional' })
+            });
+            const userData = await userRes.json();
+            if(userData.success){
+                await fetch('/api/index.php?route=professionals', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        user_id: userData.id,
+                        service_type,
+                        description: '',
+                        location
+                    })
+                });
+                document.getElementById('register-professional-form').style.display = 'none';
+                document.getElementById('register-success-message').style.display = 'block';
+                setTimeout(() => { window.location.href = 'auth.html'; }, 3500);
+            }else{
+                alert(userData.error || 'حدث خطأ أثناء التسجيل');
+            }
+        } catch (err) {
+            alert('حدث خطأ في الاتصال بالخادم');
+        }
+        document.getElementById('register-spinner').style.display = 'none';
+    });
+    </script>
+</body>
+</html>

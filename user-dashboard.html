@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المستخدم - صنايعي</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>صنايعي</h1>
+            </div>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="#">اطلب خدمة</a></li>
+                    <li><a href="#">انضم كصنايعي</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="auth.html" class="btn primary-btn">تسجيل دخول</a>
+                    <a href="auth.html" class="btn secondary-btn">تسجيل جديد</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="user-dashboard-section">
+        <div class="container dashboard-container">
+            <aside class="sidebar">
+                <div class="user-info">
+                    <img src="images/client-placeholder.jpg" alt="صورة المستخدم" class="user-profile-img">
+                    <h3>أهلاً بك، [اسم المستخدم]</h3>
+                    <p class="user-email">user@example.com</p>
+                    <div id="user-membership-info"></div>
+                </div>
+                <nav class="dashboard-nav">
+                    <ul>
+                        <li class="active" data-section="my-requests">
+                            <a href="#"><i class="fas fa-list-alt"></i> طلباتي</a>
+                        </li>
+                        <li data-section="profile-settings">
+                            <a href="#"><i class="fas fa-user-circle"></i> ملفي الشخصي</a>
+                        </li>
+                        <li data-section="notifications">
+                            <a href="#"><i class="fas fa-bell"></i> الإشعارات <span class="badge">3</span></a>
+                        </li>
+                        <li data-section="payments">
+                            <a href="#"><i class="fas fa-credit-card"></i> المدفوعات</a>
+                        </li>
+                        <li>
+                            <a href="index.html"><i class="fas fa-sign-out-alt"></i> تسجيل خروج</a>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="dashboard-content">
+                <div id="my-requests" class="dashboard-section active">
+                    <h2>طلباتي</h2>
+                    <p class="lead-text">تتبع حالة طلباتك للخدمات المختلفة.</p>
+                    <div class="requests-table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>الصنايعي</th>
+                                    <th>الخدمة المطلوبة</th>
+                                    <th>تاريخ الطلب</th>
+                                    <th>الحالة</th>
+                                    <th>إجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody id="requests-table-body">
+                                <!-- الطلبات ستملأ ديناميكياً -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <button class="btn primary-btn load-more-btn" id="load-more-requests-btn">تحميل المزيد من الطلبات</button>
+                </div>
+
+                <div id="profile-settings" class="dashboard-section">
+                    <h2>ملفي الشخصي</h2>
+                    <p class="lead-text">إدارة معلومات ملفك الشخصي.</p>
+                    <form class="profile-settings-form" id="profile-settings-form">
+                        <div class="form-group">
+                            <label for="user-name">الاسم:</label>
+                            <input type="text" id="user-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-email">البريد الإلكتروني:</label>
+                            <input type="email" id="user-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-phone">رقم الهاتف:</label>
+                            <input type="tel" id="user-phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="user-address">العنوان:</label>
+                            <input type="text" id="user-address" placeholder="مثال: شقة 5، عمارة 10، شارع النصر، مدينة نصر">
+                        </div>
+                        <button type="submit" class="btn primary-btn">حفظ التغييرات</button>
+                    </form>
+                </div>
+
+                <div id="notifications" class="dashboard-section">
+                    <h2>الإشعارات</h2>
+                    <p class="lead-text">تلقى إشعارات حول حالة طلباتك، العروض الجديدة، والتحديثات.</p>
+                    <div class="notifications-list"></div>
+                    <button class="btn secondary-btn mark-all-read-btn">تحديد الكل كمقروء</button>
+                </div>
+
+                <div id="payments" class="dashboard-section">
+                    <h2>المدفوعات</h2>
+                    <p class="lead-text">سجل مدفوعاتك ومعلومات الفواتير.</p>
+                    <div class="payments-table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>رقم الفاتورة</th>
+                                    <th>الخدمة</th>
+                                    <th>الصنايعي</th>
+                                    <th>التاريخ</th>
+                                    <th>المبلغ</th>
+                                    <th>الحالة</th>
+                                </tr>
+                            </thead>
+                            <tbody id="payments-table-body">
+                                <!-- المدفوعات ستملأ ديناميكياً -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Footer موحد -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>عن صنايعي</h4>
+                    <ul>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للعملاء</h4>
+                    <ul>
+                        <li><a href="#">كيف تطلب خدمة؟</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">دعم العملاء</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للصنايعية</h4>
+                    <ul>
+                        <li><a href="#">كيف تنضم إلينا؟</a></li>
+                        <li><a href="#">مزايا الصنايعي</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p>البريد الإلكتروني: ehabgm200@gmail.com</p>
+                    <p>الهاتف: 01022679250</p>
+                    <div class="social-media">
+                        <a href="https://www.ehabgm.link/" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 صنايعي. جميع الحقوق محفوظة. www.ehabgm.link - ehabgm200@gmail.com - 01022679250</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // تحميل الطلبات
+        DB.getUserOrders = async function(userId) {
+            try {
+                const res = await API.get(`orders?client_id=${userId}`);
+                return res;
+            } catch (e) { return []; }
+        };
+        DB.getUserPayments = async function(userId) {
+            try {
+                const res = await API.get(`payments?user_id=${userId}`);
+                return res;
+            } catch (e) { return []; }
+        };
+
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        // الطلبات
+        DB.getUserOrders(user.id).then(orders => {
+            const tbody = document.getElementById('requests-table-body');
+            tbody.innerHTML = '';
+            orders.forEach(order => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${order.professional_name || ''}</td>
+                        <td>${order.service_name || ''}</td>
+                        <td>${formatDate(order.created_at)}</td>
+                        <td><span class="status ${order.status}">${order.status_ar || order.status}</span></td>
+                        <td>
+                            <a href="order-tracking.html?order_id=${order.id}" class="btn secondary-btn view-details-btn">عرض التفاصيل</a>
+                            ${order.status === 'completed' && !order.reviewed ? `<button class="btn primary-btn" onclick="openReviewModal(${order.id})">تقييم</button>` : ''}
+                        </td>
+                    </tr>
+                `;
+            });
+        });
+
+        // المدفوعات
+        DB.getUserPayments(user.id).then(payments => {
+            const tbody = document.getElementById('payments-table-body');
+            tbody.innerHTML = '';
+            payments.forEach(payment => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${payment.invoice_number}</td>
+                        <td>${payment.service_name}</td>
+                        <td>${payment.professional_name}</td>
+                        <td>${formatDate(payment.date)}</td>
+                        <td>${payment.amount} جنيه</td>
+                        <td><span class="status ${payment.status}">${payment.status_ar || payment.status}</span></td>
+                    </tr>
+                `;
+            });
+        });
+
+        // الملف الشخصي
+        const profileForm = document.getElementById('profile-settings-form');
+        if (profileForm) {
+            document.getElementById('user-name').value = user.name || '';
+            document.getElementById('user-email').value = user.email || '';
+            document.getElementById('user-phone').value = user.phone || '';
+            profileForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                await DB.updateUser(user.id, {
+                    name: document.getElementById('user-name').value,
+                    email: document.getElementById('user-email').value,
+                    phone: document.getElementById('user-phone').value
+                });
+                alert('تم تحديث بياناتك بنجاح');
+            });
+        }
+
+        // تقييم الطلب
+        window.openReviewModal = function(orderId) {
+            const rating = prompt('من فضلك أدخل تقييمك من 1 إلى 5');
+            const comment = prompt('اكتب تعليقك عن الخدمة');
+            if (rating && comment) {
+                ReviewService.addReview(orderId, parseInt(rating), comment).then(() => {
+                    alert('تم إرسال تقييمك بنجاح');
+                    location.reload();
+                });
+            }
+        };
+
+        // عرض معلومات العضوية للعميل
+        document.getElementById('user-membership-info').innerHTML = '<span class="membership-badge free">جميع خدمات المنصة مجانية بالكامل</span>';
+    });
+    </script>
+</body>
+</html>

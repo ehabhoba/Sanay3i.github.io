@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف الصنايعي - [اسم الصنايعي]</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>صنايعي</h1>
+            </div>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="request-service.html">اطلب خدمة</a></li>
+                    <li><a href="register-professional.html">انضم كصنايعي</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="auth.html" class="btn primary-btn">تسجيل دخول</a>
+                    <a href="auth.html" class="btn secondary-btn">تسجيل جديد</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="professional-profile-section">
+        <div class="container">
+            <div class="profile-header" id="professional-profile">
+                <img id="professional-image" src="images/profile-placeholder.jpg" alt="صورة الصنايعي" class="profile-large-img">
+                <div class="profile-info">
+                    <h2 id="professional-name">محمود علي <span id="verified-badge"></span></h2>
+                    <p id="professional-service" class="specialization">صيانة منزلية شاملة (سباكة، كهرباء، نجارة)</p>
+                    <div id="membership-badge"></div>
+                </div>
+            </div>
+
+            <div class="profile-tabs">
+                <button class="profile-tab active" data-tab="about">عن الصنايعي</button>
+                <button class="profile-tab" data-tab="services">خدماتي</button>
+                <button class="profile-tab" data-tab="portfolio">معرض الأعمال</button>
+                <button class="profile-tab" data-tab="reviews">التقييمات</button>
+            </div>
+
+            <div class="profile-content">
+                <div id="about-content" class="tab-content active">
+                    <h3>نبذة عني</h3>
+                    <p id="professional-description">أنا محمود علي، صنايعي متخصص في الصيانة المنزلية الشاملة بخبرة تزيد عن 10 سنوات في السوق المصري. أقدم خدمات عالية الجودة في مجالات السباكة، الكهرباء، النجارة، والدهانات. ألتزم بالدقة والمواعيد وأحرص على تقديم أفضل الحلول لعملائي بأسعار تنافسية.</p>
+                    <p>هدفي هو ضمان راحة العميل وتقديم خدمة موثوقة تستمر لفترة طويلة. أستخدم أحدث الأدوات والمعدات لضمان جودة العمل.</p>
+                </div>
+
+                <div id="services-content" class="tab-content">
+                    <h3>الخدمات التي أقدمها</h3>
+                    <div class="services-list">
+                        <div class="service-item">
+                            <h4><i class="fas fa-faucet"></i> خدمات السباكة</h4>
+                            <p>إصلاح التسربات، تركيب الخلاطات والسخانات، تسليك البالوعات.</p>
+                            <span class="price">تبدأ من 150 جنيه</span>
+                        </div>
+                        <div class="service-item">
+                            <h4><i class="fas fa-bolt"></i> خدمات الكهرباء</h4>
+                            <p>تغيير المفاتيح والبرايز، إصلاح الأعطال الكهربائية، تركيب الإضاءة.</p>
+                            <span class="price">تبدأ من 100 جنيه</span>
+                        </div>
+                        <div class="service-item">
+                            <h4><i class="fas fa-tools"></i> خدمات النجارة</h4>
+                            <p>إصلاح الأبواب والشبابيك، تركيب الأثاث، تفصيل قطع صغيرة.</p>
+                            <span class="price">تبدأ من 200 جنيه</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="portfolio-content" class="tab-content">
+                    <h3>معرض أعمالي</h3>
+                    <div class="portfolio-gallery">
+                        <img src="images/portfolio1.jpg" alt="صورة عمل 1">
+                        <img src="images/portfolio2.jpg" alt="صورة عمل 2">
+                        <img src="images/portfolio3.jpg" alt="صورة عمل 3">
+                        <img src="images/portfolio4.jpg" alt="صورة عمل 4">
+                        </div>
+                </div>
+
+                <div id="reviews-content" class="tab-content">
+                    <h3>تقييمات العملاء</h3>
+                    <div class="reviews-list">
+                        <div class="review-item">
+                            <div class="review-header">
+                                <img src="images/client-placeholder.jpg" alt="صورة عميل" class="review-client-img">
+                                <h4>أ. سارة عبد الله</h4>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p>"حرفية وأمانة! قدمت الأستاذ أيمن نجار ممتاز لإصلاح الأثاث. متعاون جداً وأسعاره معقولة جداً. شكراً صنايعي!"</p>
+                            <span class="review-date">منذ يومين</span>
+                        </div>
+                        <div class="review-item">
+                            <div class="review-header">
+                                <img src="images/client-placeholder.jpg" alt="صورة عميل" class="review-client-img">
+                                <h4>أ. خالد محمود</h4>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <p>"كنت محتاج كهربائي ضروري، وصنايعي كان الحل الأمثل! فني وصل بسرعة وكان محترف جداً."</p>
+                            <span class="review-date">منذ أسبوع</span>
+                        </div>
+                        </div>
+                    <button class="btn secondary-btn view-all-reviews-btn">مشاهدة كل التقييمات</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>عن صنايعي</h4>
+                    <ul>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للعملاء</h4>
+                    <ul>
+                        <li><a href="#">كيف تطلب خدمة؟</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">دعم العملاء</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للصنايعية</h4>
+                    <ul>
+                        <li><a href="#">كيف تنضم إلينا؟</a></li>
+                        <li><a href="#">مزايا الصنايعي</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p>البريد الإلكتروني: ehabgm200@gmail.com</p>
+                    <p>الهاتف: 01022679250</p>
+                    <div class="social-media">
+                        <a href="https://www.ehabgm.link/" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 صنايعي. جميع الحقوق محفوظة. www.ehabgm.link - ehabgm200@gmail.com - 01022679250</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    function initProfessionalProfilePage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const professionalName = urlParams.get('name');
+        if (!professionalName) return;
+        DB.getProfessionals().then(professionals => {
+            const professional = professionals.find(p => p.name === professionalName);
+            if (professional) {
+                document.getElementById('professional-name').textContent = professional.name;
+                document.getElementById('professional-service').textContent = professional.service_type;
+                document.getElementById('professional-location').textContent = professional.location;
+                document.getElementById('professional-rating').textContent = professional.rating;
+                document.getElementById('professional-description').textContent = professional.description;
+                document.getElementById('professional-image').src = professional.profile_image || 'images/profile-placeholder.jpg';
+                document.getElementById('professional-image').alt = professional.name;
+                document.getElementById('verified-badge').innerHTML = professional.is_verified ? '<i class="fas fa-badge-check" style="color:#1e88e5" title="صنايعي موثوق"></i>' : '';
+                document.getElementById('membership-badge').innerHTML = '<span class="membership-badge free">جميع الصنايعية متاحون مجاناً</span>';
+                loadReviews(professional.id);
+            } else {
+                document.getElementById('professional-profile').innerHTML = '<p>لم يتم العثور على هذا الصنايعي.</p>';
+            }
+        });
+    }
+    function loadReviews(professionalId) {
+        ReviewService.getProfessionalReviews(professionalId).then(reviews => {
+            const reviewsList = document.querySelector('.reviews-list');
+            if (reviewsList) {
+                reviewsList.innerHTML = '';
+                reviews.forEach(r => {
+                    reviewsList.innerHTML += `
+                        <div class="review-item">
+                            <div class="review-header">
+                                <img src="images/client-placeholder.jpg" alt="صورة عميل" class="review-client-img">
+                                <h4>${r.client_name}</h4>
+                                <div class="rating">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
+                            </div>
+                            <p>"${r.comment}"</p>
+                            <span class="review-date">${formatDate(r.created_at)}</span>
+                        </div>
+                    `;
+                });
+            }
+        });
+    }
+    document.addEventListener('DOMContentLoaded', initProfessionalProfilePage);
+    </script>
+</body>
+</html>

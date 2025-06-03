@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المدير - صنايعي</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><h1>صنايعي - مدير</h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="admin-dashboard.html">لوحة المدير</a></li>
+                    <li><a href="auth.html" onclick="AuthService.logout()">تسجيل خروج</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="admin-dashboard-section">
+        <div class="container">
+            <h2>إدارة المستخدمين والصنايعية</h2>
+            <div>
+                <h4>بحث عن مستخدم/صنايعي</h4>
+                <input type="text" id="search-user-input" placeholder="اكتب البريد أو الهاتف أو ID">
+                <button onclick="searchUserOrPro()">بحث</button>
+                <div id="search-user-result"></div>
+            </div>
+            <div id="admin-users-table"></div>
+            <div id="admin-professionals-table"></div>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p>البريد الإلكتروني: ehabgm200@gmail.com</p>
+                    <p>الهاتف: 01022679250</p>
+                    <div class="social-media">
+                        <a href="https://www.ehabgm.link/" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 صنايعي. جميع الحقوق محفوظة. www.ehabgm.link - ehabgm200@gmail.com - 01022679250</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        if (!requireAdmin()) return;
+
+        // تحقق من أن المستخدم مدير
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        if (!user || user.type !== 'admin') {
+            window.location.href = 'auth.html';
+            return;
+        }
+        // جلب كل المستخدمين
+        const users = await DB.getAllUsers();
+        let html = '<h3>جميع المستخدمين</h3><table><thead><tr><th>الاسم</th><th>البريد</th><th>الهاتف</th><th>النوع</th><th>العضوية</th><th>استخدام AI</th><th>تفعيل AI</th><th>تاريخ انتهاء العضوية</th><th>إجراء</th></tr></thead><tbody>';
+        users.forEach(u => {
+            html += `<tr>
+                <td><input type="text" value="${u.name}" data-id="${u.id}" data-field="name"></td>
+                <td><input type="email" value="${u.email}" data-id="${u.id}" data-field="email"></td>
+                <td><input type="text" value="${u.phone || ''}" data-id="${u.id}" data-field="phone"></td>
+                <td>
+                    <select data-id="${u.id}" data-field="type">
+                        <option value="client" ${u.type === 'client' ? 'selected' : ''}>عميل</option>
+                        <option value="professional" ${u.type === 'professional' ? 'selected' : ''}>صنايعي</option>
+                        <option value="admin" ${u.type === 'admin' ? 'selected' : ''}>مدير</option>
+                    </select>
+                </td>
+                <td>
+                    <select data-id="${u.id}" data-field="membership_type">
+                        <option value="free" ${u.membership_type === 'free' ? 'selected' : ''}>مجانية</option>
+                        <option value="paid" ${u.membership_type === 'paid' ? 'selected' : ''}>مدفوعة</option>
+                    </select>
+                </td>
+                <td><input type="number" value="${u.ai_usage_count || 0}" min="0" data-id="${u.id}" data-field="ai_usage_count"></td>
+                <td>
+                    <select data-id="${u.id}" data-field="ai_enabled">
+                        <option value="1" ${u.ai_enabled ? 'selected' : ''}>مفعل</option>
+                        <option value="0" ${!u.ai_enabled ? 'selected' : ''}>معطل</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="date" value="${u.membership_expiry || ''}" data-id="${u.id}" data-field="membership_expiry">
+                    ${u.membership_expiry && new Date(u.membership_expiry) < new Date() ? '<span style="color:red;font-size:12px;">منتهية</span>' : ''}
+                </td>
+                <td><button onclick="saveUser(${u.id})">حفظ</button></td>
+            </tr>`;
+        });
+        html += '</tbody></table>';
+        document.getElementById('admin-users-table').innerHTML = html;
+
+        window.saveUser = async function(id) {
+            const row = document.querySelectorAll(`[data-id="${id}"]`);
+            const data = {};
+            row.forEach(input => {
+                data[input.dataset.field] = input.value;
+            });
+            await DB.updateUser(id, data);
+            alert('تم حفظ التعديلات');
+        };
+
+        // جلب الصنايعية
+        const professionals = await DB.getProfessionals();
+        let proHtml = '<h3>جميع الصنايعية</h3><table><thead><tr><th>الاسم</th><th>الخدمة</th><th>الموقع</th><th>التقييم</th><th>عضوية</th><th>شارة التحقق</th><th>تفعيل شارة التحقق</th><th>تاريخ انتهاء العضوية</th><th>إجراء</th></tr></thead><tbody>';
+        professionals.forEach(p => {
+            proHtml += `<tr>
+                <td>${p.name || ''}</td>
+                <td><input type="text" value="${p.service_type || ''}" data-id="${p.id}" data-field="service_type"></td>
+                <td><input type="text" value="${p.location || ''}" data-id="${p.id}" data-field="location"></td>
+                <td><input type="number" value="${p.rating || 0}" min="0" max="5" step="0.1" data-id="${p.id}" data-field="rating"></td>
+                <td>
+                    <select data-id="${p.id}" data-field="membership_type">
+                        <option value="free" ${p.membership_type === 'free' ? 'selected' : ''}>مجانية</option>
+                        <option value="paid" ${p.membership_type === 'paid' ? 'selected' : ''}>مدفوعة</option>
+                    </select>
+                </td>
+                <td>
+                    <select data-id="${p.id}" data-field="is_verified">
+                        <option value="0" ${!p.is_verified ? 'selected' : ''}>بدون شارة</option>
+                        <option value="1" ${p.is_verified ? 'selected' : ''}>مع شارة</option>
+                    </select>
+                </td>
+                <td>
+                    <select data-id="${p.id}" data-field="verified_enabled">
+                        <option value="1" ${p.verified_enabled ? 'selected' : ''}>مفعل</option>
+                        <option value="0" ${!p.verified_enabled ? 'selected' : ''}>معطل</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="date" value="${p.membership_expiry || ''}" data-id="${p.id}" data-field="membership_expiry">
+                    ${p.membership_expiry && new Date(p.membership_expiry) < new Date() ? '<span style="color:red;font-size:12px;">منتهية</span>' : ''}
+                </td>
+                <td><button onclick="saveProfessional(${p.id})">حفظ</button></td>
+            </tr>`;
+        });
+        proHtml += '</tbody></table>';
+        document.getElementById('admin-professionals-table').innerHTML = proHtml;
+
+        window.saveProfessional = async function(id) {
+            const row = document.querySelectorAll(`#admin-professionals-table [data-id="${id}"]`);
+            const data = {};
+            row.forEach(input => {
+                data[input.dataset.field] = input.value;
+            });
+            await DB.updateProfessional(id, data);
+            alert('تم حفظ التعديلات');
+        };
+
+        // بحث عن مستخدم أو صنايعي
+        window.searchUserOrPro = async function() {
+            const val = document.getElementById('search-user-input').value.trim();
+            let result = '';
+            if (!val) return;
+            let user = await DB.findUser({id: val, email: val, phone: val});
+            if (user) {
+                result = `<b>مستخدم:</b> ${user.name} | ${user.email} | ${user.phone} | نوع: ${user.type} | عضوية: ${user.membership_type}`;
+            } else {
+                let pro = await DB.findProfessional({id: val, email: val, phone: val});
+                if (pro) {
+                    result = `<b>صنايعي:</b> ${pro.name} | خدمة: ${pro.service_type} | موقع: ${pro.location} | عضوية: ${pro.membership_type} | شارة: ${pro.is_verified ? 'نعم' : 'لا'}`;
+                } else {
+                    result = 'لا يوجد مستخدم أو صنايعي بهذه البيانات.';
+                }
+            }
+            document.getElementById('search-user-result').innerHTML = result;
+        };
+    });
+    </script>
+</body>
+</html>

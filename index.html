@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صنايعي | المنصة الذكية لخدمات الصيانة</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>صنايعي</h1>
+            </div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="request-service.html">اطلب خدمة</a></li>
+                    <li><a href="register-professional.html">انضم كصنايعي</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="auth.html" class="btn primary-btn">تسجيل دخول</a>
+                <a href="auth.html" class="btn secondary-btn">تسجيل جديد</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section" style="background: url('images/hero-bg.jpg') no-repeat center center/cover;">
+        <div class="container">
+            <h2>ابحث عن أفضل الصنايعية والخدمات في منطقتك</h2>
+            <p>
+                يمكنك البحث عن الصنايعية وطلب الخدمة مباشرة بدون تسجيل دخول.<br>
+                إذا أردت تتبع طلباتك أو تقييم الصنايعي أو استخدام الذكاء الاصطناعي، يجب تسجيل الدخول أو إنشاء حساب.
+            </p>
+            <div class="search-bar">
+                <input type="text" placeholder="ابحث عن سباك، كهربائي، نجار...">
+                <button class="btn primary-btn">بحث</button>
+                <!-- Added spinner indicator hidden by default -->
+                <div id="search-spinner" class="spinner" style="display:none;"></div>
+            </div>
+            <div class="popular-services">
+                <div class="service-icon">
+                    <i class="fas fa-wrench"></i>
+                    <p>سباكة</p>
+                </div>
+                <div class="service-icon">
+                    <i class="fas fa-lightbulb"></i>
+                    <p>كهرباء</p>
+                </div>
+                <div class="service-icon">
+                    <i class="fas fa-hammer"></i>
+                    <p>نجارة</p>
+                </div>
+                <div class="service-icon">
+                    <i class="fas fa-paint-roller"></i>
+                    <p>نقاشة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-results-section" style="display: none;">
+        <div class="container">
+            <h3>نتائج البحث عن: <span id="search-query-display"></span></h3>
+            <div id="search-results-container" class="results-grid">
+                </div>
+            <p id="no-results-message" style="display: none; text-align: center; margin-top: 30px; font-size: 18px; color: #666;">لا توجد نتائج بحث مطابقة.</p>
+        </div>
+    </section>
+
+    <section class="featured-services">
+        <div class="container">
+            <h3>خدمات مميزة</h3>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-snowflake card-icon"></i>
+                    <h4>صيانة المكيفات</h4>
+                    <p>صنايعي متخصص في صيانة وتركيب جميع أنواع المكيفات.</p>
+                    <a href="#" class="btn secondary-btn">اطلب الخدمة</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-trowel card-icon"></i>
+                    <h4>تركيب السيراميك</h4>
+                    <p>أفضل الحرفيين لتركيب السيراميك والرخام بأعلى جودة.</p>
+                    <a href="#" class="btn secondary-btn">اطلب الخدمة</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tools card-icon"></i>
+                    <h4>تصليح الأجهزة المنزلية</h4>
+                    <p>تصليح فوري لجميع الأجهزة الكهربائية المنزلية.</p>
+                    <a href="#" class="btn secondary-btn">اطلب الخدمة</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <h3>ماذا يقول عملاؤنا؟</h3>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <img src="images/testimonial1.jpg" alt="صورة عميل" class="client-img">
+                    <p class="quote">"منصة صنايعي سهلت عليا كتير إني ألاقي السباك المناسب في أسرع وقت. خدمة ممتازة!"</p>
+                    <p class="client-name">- أ. فاطمة الزهراء</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/testimonial2.jpg" alt="صورة عميل" class="client-img">
+                    <p class="quote">"كنت محتاج كهربائي ضروري، وصنايعي كان الحل الأمثل. الفني وصل بسرعة وكان محترف جداً."</p>
+                    <p class="client-name">- أ. خالد محمود</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <img src="images/testimonial3.jpg" alt="صورة عميل" class="client-img">
+                    <p class="quote">"تجربة رائعة! قدرت ألاقي نجار ممتاز لتصليح الأثاث بتاعي بأسعار معقولة جداً. شكراً صنايعي."</p>
+                    <p class="client-name">- أ. سارة عبد الله</p>
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h3>كيف تعمل منصة صنايعي؟</h3>
+            <div class="steps-grid">
+                <div class="step">
+                    <span>1</span>
+                    <h4>اطلب خدمتك</h4>
+                    <p>وصف المشكلة وأضف الصور إن أمكن.</p>
+                </div>
+                <div class="step">
+                    <span>2</span>
+                    <h4>اختار الصنايعي</h4>
+                    <p>راجع الملفات الشخصية والتقييمات واختر الأنسب لك.</p>
+                </div>
+                <div class="step">
+                    <span>3</span>
+                    <h4>احصل على الخدمة</h4>
+                    <p>تواصل مباشرة مع الصنايعي واستقبل الخدمة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="join-us-section">
+        <div class="container">
+            <h3>انضم كصنايعي وابدأ في زيادة دخلك!</h3>
+            <p>انضم إلى شبكة "صنايعي" لتحصل على المزيد من العملاء والفرص.</p>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-handshake"></i>
+                    <p>عملاء جدد</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <p>زيادة الدخل</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-star-half-alt"></i>
+                    <p>بناء سمعة قوية</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>تغطية أوسع</p>
+                </div>
+            </div>
+            <a href="register-professional.html" class="btn primary-btn large-btn" id="register-pro-btn">سجل كصنايعي الآن!</a>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <h3>استكشف الصنايعية القريبين منك</h3>
+            <div id="map-container" class="map-container"></div>
+        </div>
+    </section>
+
+    <section class="ai-features">
+        <div class="container">
+            <h3>منصة ذكية لخدمة أذكى</h3>
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fas fa-brain"></i>
+                    <h4>بحث ذكي وموجه</h4>
+                    <p>الذكاء الاصطناعي يساعدك في إيجاد الفني المناسب لأي مشكلة.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-star"></i>
+                    <h4>توصيات فنيين احترافية</h4>
+                    <p>نظام التوصيات يقترح عليك أفضل الصنايعية بناءً على تقييمات العملاء.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-comments"></i>
+                    <h4>دعم فوري ومساعد شخصي</h4>
+                    <p>شات بوت ذكي للرد على استفساراتك ومساعدتك في كل خطوة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>عن صنايعي</h4>
+                    <ul>
+                        <li><a href="about.html">من نحن</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="privacy.html">سياسة الخصوصية</a></li>
+                        <li><a href="terms.html">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للعملاء</h4>
+                    <ul>
+                        <li><a href="request-service.html">كيف تطلب خدمة؟</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="contact.html">دعم العملاء</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للصنايعية</h4>
+                    <ul>
+                        <li><a href="register-professional.html">كيف تنضم إلينا؟</a></li>
+                        <li><a href="#">مزايا الصنايعي</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p>البريد الإلكتروني: ehabgm200@gmail.com</p>
+                    <p>الهاتف: 01022679250</p>
+                    <div class="social-media">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.ehabgm.link/" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 صنايعي. جميع الحقوق محفوظة. www.ehabgm.link - ehabgm200@gmail.com - 01022679250</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- أضف تحميل مكتبة الخرائط وملف mapService.js قبل main.js -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="js/services/mapService.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    // تفعيل زر القائمة الجانبية للجوال
+    document.addEventListener('DOMContentLoaded', function() {
+        var menuToggle = document.getElementById('mobile-menu');
+        var nav = document.querySelector('header nav');
+        if(menuToggle && nav) {
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+
+        // تفعيل زر سجل كصنايعي الآن!
+        var regBtn = document.getElementById('register-pro-btn');
+        if(regBtn){
+            regBtn.onclick = function(e){
+                e.preventDefault();
+                window.location.href = 'register-professional.html';
+            };
+        }
+
+        // تهيئة الخريطة
+        if (document.getElementById('map-container') && window.initMapService) {
+            window.initMapService();
+        }
+    });
+    </script>
+</body>
+</html>

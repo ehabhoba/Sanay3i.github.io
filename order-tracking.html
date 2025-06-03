@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تتبع الطلب - صنايعي</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header (تم نسخه) -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>صنايعي</h1>
+            </div>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="#">اطلب خدمة</a></li>
+                    <li><a href="#">انضم كصنايعي</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="auth.html" class="btn primary-btn">تسجيل دخول</a>
+                    <a href="auth.html" class="btn secondary-btn">تسجيل جديد</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Order Tracking Section -->
+    <section class="order-tracking-section">
+        <div class="container tracking-container">
+            <h2>تتبع الطلب <span id="order-id-display">#123456</span></h2>
+            <p class="lead-text">يمكنك متابعة حالة طلبك الحالي هنا.</p>
+
+            <div class="tracking-summary">
+                <div class="summary-item">
+                    <h4>الصنايعي</h4>
+                    <p id="professional-name">محمود علي</p>
+                </div>
+                <div class="summary-item">
+                    <h4>الخدمة المطلوبة</h4>
+                    <p id="service-requested">إصلاح تسرب المياه</p>
+                </div>
+                <div class="summary-item">
+                    <h4>تاريخ الطلب</h4>
+                    <p id="order-date">2024-05-20</p>
+                </div>
+                <div class="summary-item">
+                    <h4>الوقت المفضل</h4>
+                    <p id="order-time">14:00</p>
+                </div>
+            </div>
+
+            <div class="tracking-progress">
+                <div class="progress-step active" data-status="pending">
+                    <div class="step-icon"><i class="fas fa-hourglass-half"></i></div>
+                    <p class="step-text">قيد الانتظار</p>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-status="accepted">
+                    <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                    <p class="step-text">تم القبول</p>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-status="on-the-way">
+                    <div class="step-icon"><i class="fas fa-truck"></i></div>
+                    <p class="step-text">في الطريق</p>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-status="completed">
+                    <div class="step-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <p class="step-text">مكتمل</p>
+                </div>
+            </div>
+
+            <div class="current-status-card">
+                <h3>الحالة الحالية: <span id="current-status-display" class="status pending">قيد الانتظار</span></h3>
+                <div class="professional-details-card">
+                    <img src="images/profile-placeholder.jpg" alt="صورة الصنايعي" class="professional-profile-img">
+                    <div class="details-text">
+                        <h4>الصنايعي: <span id="current-professional-name">محمود علي</span></h4>
+                        <p>التقييم: <span class="rating-stars"><i class="fas fa-star"></i> 4.5</span></p>
+                        <p>رقم الهاتف: <span id="professional-phone">01012345678</span></p>
+                    </div>
+                </div>
+                <p class="status-message" id="status-message">طلبك قيد المراجعة، سيتم تأكيده قريباً.</p>
+                <div class="action-buttons">
+                    <button class="btn secondary-btn" id="cancel-order-btn"><i class="fas fa-times-circle"></i> إلغاء الطلب</button>
+                    <button class="btn primary-btn" id="contact-professional-btn"><i class="fas fa-phone-alt"></i> اتصل بالصنايعي</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (تم نسخه) -->
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>عن صنايعي</h4>
+                    <ul>
+                        <li><a href="#">من نحن</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للعملاء</h4>
+                    <ul>
+                        <li><a href="#">كيف تطلب خدمة؟</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">دعم العملاء</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للصنايعية</h4>
+                    <ul>
+                        <li><a href="#">كيف تنضم إلينا؟</a></li>
+                        <li><a href="#">مزايا الصنايعي</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p>البريد الإلكتروني: ehabgm200@gmail.com</p>
+                    <p>الهاتف: 01022679250</p>
+                    <div class="social-media">
+                        <a href="https://www.ehabgm.link/" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 صنايعي. جميع الحقوق محفوظة. www.ehabgm.link - ehabgm200@gmail.com - 01022679250</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // إذا لم يكن العميل مسجل دخول، اعرض الطلب من localStorage فقط
+        let order = null;
+        if (localStorage.getItem('user')) {
+            // ...هنا يمكنك جلب الطلبات من الـ API حسب المستخدم...

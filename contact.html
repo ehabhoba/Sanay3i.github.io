@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا - صنايعي</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><h1>صنايعي</h1></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="request-service.html">اطلب خدمة</a></li>
+                    <li><a href="register-professional.html">انضم كصنايعي</a></li>
+                    <li><a href="about.html">من نحن</a></li>
+                    <li><a href="contact.html">تواصل معنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="contact-section">
+        <div class="container">
+            <h2>تواصل معنا</h2>
+            <p>فريق دعم صنايعي جاهز للرد على جميع استفساراتك ومساعدتك في أي مشكلة أو اقتراح. يمكنك التواصل معنا عبر النموذج أو مباشرة عبر البريد والهاتف.</p>
+            <form id="contact-form" class="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">الاسم:</label>
+                    <input type="text" id="contact-name" name="contact-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">البريد الإلكتروني:</label>
+                    <input type="email" id="contact-email" name="contact-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">رسالتك:</label>
+                    <textarea id="contact-message" name="contact-message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn primary-btn full-width-btn">إرسال</button>
+            </form>
+            <div class="contact-info">
+                <p><strong>البريد الإلكتروني:</strong> ehabgm200@gmail.com</p>
+                <p><strong>الهاتف:</strong> 01022679250</p>
+                <p><strong>الموقع:</strong> <a href="https://www.ehabgm.link/" target="_blank">www.ehabgm.link</a></p>
+                <p><strong>الدعم عبر الواتساب:</strong> <a href="https://wa.me/201022679250" target="_blank">اضغط هنا</a></p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <!-- ...existing code for footer... -->
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e){
+        e.preventDefault();
+        alert('تم إرسال رسالتك بنجاح! سنرد عليك قريباً.');
+        this.reset();
+    });
+    </script>
+</body>
+</html>

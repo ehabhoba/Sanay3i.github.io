@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تشخيص المشكلة بالذكاء الاصطناعي - صنايعي</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>صنايعي</h1>
+            </div>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">الرئيسية</a></li>
+                    <li><a href="ai-diagnosis.html">تشخيص بالذكاء الاصطناعي</a></li> <li><a href="#">اطلب خدمة</a></li>
+                    <li><a href="#">انضم كصنايعي</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">تواصل معنا</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="auth.html" class="btn primary-btn">تسجيل دخول</a>
+                    <a href="auth.html" class="btn secondary-btn">تسجيل جديد</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="ai-diagnosis-section">
+        <div class="container diagnosis-container">
+            <h2>تشخيص المشكلة بالذكاء الاصطناعي <i class="fas fa-brain"></i></h2>
+            <p class="lead-text">أدخل وصفًا تفصيليًا للمشكلة التي تواجهها، وسنقدم لك تشخيصًا مبدئيًا واقتراحات.</p>
+
+            <div class="diagnosis-input-card">
+                <div class="form-group">
+                    <label for="problem-description">صف المشكلة التي تواجهها:</label>
+                    <textarea id="problem-description" rows="10" placeholder="مثال: يوجد تسرب مياه خفيف تحت حوض المطبخ بعد استخدام غسالة الأطباق، أو: لمبة الحمام لا تعمل بعد تغييرها..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="upload-diagnosis-photos">إضافة صور للمشكلة (اختياري):</label>
+                    <input type="file" id="upload-diagnosis-photos" accept="image/*" multiple>
+                    <div class="photo-preview" id="diagnosis-photo-preview"></div>
+                    <small class="form-text-muted">الصور تساعد الذكاء الاصطناعي على فهم المشكلة بشكل أفضل.</small>
+                </div>
+                <button id="diagnose-btn" class="btn primary-btn full-width-btn">
+                    <i class="fas fa-magic"></i> تشخيص المشكلة
+                </button>
+            </div>
+
+            <div class="diagnosis-info">
+                <span class="membership-badge free">خدمة التشخيص بالذكاء الاصطناعي مجانية بالكامل لجميع المستخدمين</span>
+                <div id="ai-usage-info"></div>
+            </div>
+
+            <div class="diagnosis-result-card" id="diagnosis-result-card" style="display: none;">
+                <h3><i class="fas fa-robot"></i> تشخيص الذكاء الاصطناعي:</h3>
+                <div id="diagnosis-spinner" class="spinner" style="display:none;"></div>
+                <div id="diagnosis-output">
+                    <p>جارٍ تحليل مشكلتك...</p>
+                </div>
+                <button class="btn secondary-btn" id="ask-more-btn" style="display: none;">اسأل عن المزيد</button>
+                <button class="btn primary-btn" id="find-professional-btn"><i class="fas fa-search-plus"></i> ابحث عن صنايعي بناءً على التشخيص</button>
+            </div>
+
+            <div class="tips-section">
+                <h3><i class="fas fa-lightbulb"></i> نصائح لكتابة وصف جيد:</h3>
+                <ul>
+                    <li>اذكر متى بدأت المشكلة.</li>
+                    <li>صف الأعراض بالتفصيل.</li>
+                    <li>اذكر أي أصوات أو روائح غريبة.</li>
+                    <li>حدد الأجهزة أو الأماكن المتأثرة.</li>
+                    <li>اذكر أي محاولات قمت بها لإصلاح المشكلة.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-columns">
+                <div class="footer-col">
+                    <h4>عن صنايعي</h4>
+                    <ul>
+                        <li><a href="#">من نحن</a></li>
+                        <li><a href="#">المدونة</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للعملاء</h4>
+                    <ul>
+                        <li><a href="#">كيف تطلب خدمة؟</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">دعم العملاء</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>للصنايعية</h4>
+                    <ul>
+                        <li><a href="#">كيف تنضم إلينا؟</a></li>
+                        <li><a href="#">مزايا الصنايعي</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <p>البريد الإلكتروني: ehabgm200@gmail.com</p>
+                    <p>الهاتف: 01022679250</p>
+                    <div class="social-media">
+                        <a href="https://www.ehabgm.link/" target="_blank"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 صنايعي. جميع الحقوق محفوظة. www.ehabgm.link - ehabgm200@gmail.com - 01022679250</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const aiUsageDiv = document.getElementById('ai-usage-info');
+        if (aiUsageDiv) {
+            aiUsageDiv.innerHTML = '<span style="color:green">يمكنك استخدام الذكاء الاصطناعي بعدد غير محدود من المرات مجاناً</span>';
+        }
+    });
+    </script>
+</body>
+</html>
