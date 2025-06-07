@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
 
@@ -111,7 +112,7 @@
             <h3>ماذا يقول عملاؤنا؟</h3>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <img src="images/testimonial1.jpg" alt="صورة عميل" class="client-img">
+                    <img src="images\profile-placeholder.jpg" alt="صورة عميل" class="client-img">
                     <p class="quote">"منصة صنايعي سهلت عليا كتير إني ألاقي السباك المناسب في أسرع وقت. خدمة ممتازة!"</p>
                     <p class="client-name">- أ. فاطمة الزهراء</p>
                     <div class="stars">
@@ -119,7 +120,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <img src="images/testimonial2.jpg" alt="صورة عميل" class="client-img">
+                    <img src="images\profile-placeholder.jpg" alt="صورة عميل" class="client-img">
                     <p class="quote">"كنت محتاج كهربائي ضروري، وصنايعي كان الحل الأمثل. الفني وصل بسرعة وكان محترف جداً."</p>
                     <p class="client-name">- أ. خالد محمود</p>
                     <div class="stars">
@@ -127,7 +128,7 @@
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <img src="images/testimonial3.jpg" alt="صورة عميل" class="client-img">
+                    <img src="images\profile-placeholder.jpg" alt="صورة عميل" class="client-img">
                     <p class="quote">"تجربة رائعة! قدرت ألاقي نجار ممتاز لتصليح الأثاث بتاعي بأسعار معقولة جداً. شكراً صنايعي."</p>
                     <p class="client-name">- أ. سارة عبد الله</p>
                     <div class="stars">
@@ -145,7 +146,7 @@
                 <div class="step">
                     <span>1</span>
                     <h4>اطلب خدمتك</h4>
-                    <p>وصف المشكلة وأضف الصور إن أمكن.</p>
+                    <p>وصف المشكلة وأضف الصور إن أمكن حتى تتمكن المنصة من معرفة المشكلة وحلها واقتراح اقرب صناعي بالقرب منك.</p>
                 </div>
                 <div class="step">
                     <span>2</span>
@@ -163,8 +164,8 @@
 
     <section class="join-us-section">
         <div class="container">
-            <h3>انضم كصنايعي وابدأ في زيادة دخلك!</h3>
-            <p>انضم إلى شبكة "صنايعي" لتحصل على المزيد من العملاء والفرص.</p>
+            <h3>انضم كصنايعي وابدأ في زيادة دخلك من مكانك!</h3>
+            <pل> انضم اللى شبكة "صنايعى" حتى تتمكن من زيادة دخلك والحصول على فرص بالقب منك 
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <i class="fas fa-handshake"></i>
@@ -217,6 +218,25 @@
         </div>
     </section>
 
+    <div id="g_id_onload"
+         data-client_id="YOUR_GOOGLE_CLIENT_ID"
+         data-callback="handleCredentialResponse">
+    </div>
+    <div class="g_id_signin" data-type="standard"></div>
+    <script>
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+            // إرسال الرمز المميز إلى الباك اند للتحقق
+            fetch('/api/auth/google', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ token: response.credential })
+            }).then(res => res.json())
+              .then(data => console.log(data))
+              .catch(err => console.error(err));
+        }
+    </script>
+
     <footer>
         <div class="container">
             <div class="footer-columns">
@@ -224,7 +244,7 @@
                     <h4>عن صنايعي</h4>
                     <ul>
                         <li><a href="about.html">من نحن</a></li>
-                        <li><a href="#">المدونة</a></li>
+                        <li><a href="blog.html">المدونة</a></li>
                         <li><a href="privacy.html">سياسة الخصوصية</a></li>
                         <li><a href="terms.html">الشروط والأحكام</a></li>
                     </ul>
@@ -233,7 +253,7 @@
                     <h4>للعملاء</h4>
                     <ul>
                         <li><a href="request-service.html">كيف تطلب خدمة؟</a></li>
-                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="faq.html">الأسئلة الشائعة</a></li>
                         <li><a href="contact.html">دعم العملاء</a></li>
                     </ul>
                 </div>
@@ -241,18 +261,18 @@
                     <h4>للصنايعية</h4>
                     <ul>
                         <li><a href="register-professional.html">كيف تنضم إلينا؟</a></li>
-                        <li><a href="#">مزايا الصنايعي</a></li>
-                        <li><a href="#">الدعم الفني</a></li>
+                        <li><a href="features.html">مزايا الصنايعي</a></li>
+                        <li><a href="support.html">الدعم الفني</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>تواصل معنا</h4>
                     <p>البريد الإلكتروني: ehabgm200@gmail.com</p>
-                    <p>الهاتف: 01022679250</p>
+                    <p>الهاتف: 201140057253</p>
                     <div class="social-media">
-                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://www.twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/ehab.gm1" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.twitter.com/ehab.gm0" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/ehab.gm1" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.ehabgm.link/" target="_blank" aria-label="Website"><i class="fas fa-globe"></i></a>
                     </div>
                 </div>
